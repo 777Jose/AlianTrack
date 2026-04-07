@@ -1,6 +1,6 @@
 # ALIANTRACK - Web corporativa
 
-Proyecto base en React + TypeScript + Vite + Tailwind CSS, inspirado en el diseño del PDF de Figma.
+Proyecto base en React + TypeScript + Vite + Tailwind CSS
 
 ## Tecnologías incluidas
 - React 18
@@ -23,8 +23,3 @@ npm run dev
 - `src/lib/data.ts`: textos y contenido editable
 - `src/styles/index.css`: utilidades globales y clases compartidas
 
-## Recomendaciones
-1. Reemplazar textos y contactos por datos reales.
-2. Cambiar imágenes remotas por tus imágenes propias dentro de `public/`.
-3. Conectar el formulario a EmailJS, Formspree o backend propio.
-4. Añadir logo real de ALIANTRACK.
