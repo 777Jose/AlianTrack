@@ -1,5 +1,5 @@
-import { ArrowRight, PlayCircle, Shield, Ship, Plane } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { ArrowRight, PlayCircle, Calculator, Ship, Plane } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Hero() {
   return (
@@ -15,10 +15,14 @@ export function Hero() {
             Importaciones internacionales a Bolivia
           </span>
           <h1 className="mt-6 text-5xl font-extrabold leading-tight md:text-6xl">
-            Traemos tu carga desde <span className="text-primary">China y EE.UU.</span> con seguridad y control.
+            Traemos tu carga desde{" "}
+            <span className="text-primary">China y EE.UU.</span> con seguridad y
+            control.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-slate-200 md:text-xl">
-            Soluciones logísticas por vía marítima, aérea y terrestre para empresas que necesitan rapidez, visibilidad y acompañamiento en todo el proceso.
+            Soluciones logísticas por vía marítima, aérea y terrestre para
+            empresas que necesitan rapidez, visibilidad y acompañamiento en todo
+            el proceso.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <a href="#contacto" className="btn-primary gap-2">
@@ -30,14 +34,30 @@ export function Hero() {
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
             {[
-              { icon: Ship, label: 'Carga marítima' },
-              { icon: Plane, label: 'Carga aérea' },
-              { icon: Shield, label: 'Seguimiento seguro' },
+              {
+                icon: Ship,
+                label: "Ver carga marítima",
+                href: "#servicios",
+              },
+              {
+                icon: Plane,
+                label: "Ver carga aérea",
+                href: "#servicios",
+              },
+              {
+                icon: Calculator,
+                label: "Calcula tu flete",
+                href: "#calculadora",
+              },
             ].map((item) => (
-              <div key={item.label} className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+              <a
+                key={item.label}
+                href={item.href}
+                className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:bg-white/10"
+              >
                 <item.icon className="mb-3 text-primary" />
-                <p className="font-semibold">{item.label}</p>
-              </div>
+                <p className="font-semibold text-white">{item.label}</p>
+              </a>
             ))}
           </div>
         </motion.div>
@@ -49,8 +69,12 @@ export function Hero() {
           className="mx-auto w-full max-w-xl rounded-[28px] border border-white/10 bg-white/10 p-4 shadow-2xl backdrop-blur-md"
         >
           <div className="rounded-[24px] bg-slate-950/70 p-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Ventaja operativa</p>
-            <h2 className="mt-3 text-2xl font-bold">Tu socio logístico para importar con menos fricción</h2>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+              Ventaja operativa
+            </p>
+            <h2 className="mt-3 text-2xl font-bold">
+              Tu socio logístico para importar con menos fricción
+            </h2>
             <div className="mt-6 space-y-4 text-slate-200">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                 <p className="text-sm text-slate-400">Tiempo de respuesta</p>
@@ -71,5 +95,5 @@ export function Hero() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
