@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Target, Eye, ShieldCheck, Globe2 } from "lucide-react";
 import { MediaCarousel } from "./MediaCarousel";
 
@@ -8,6 +9,10 @@ import entrega2 from "../../assets/images/about/entrega-2.png";
 import despacho1 from "../../assets/images/about/despacho-1.png";
 import aduana1 from "../../assets/images/about/aduana-1.png";
 import entregaVideo1 from "../../assets/videos/about/entrega-video-1.mp4";
+
+type AboutProps = {
+  compact?: boolean;
+};
 
 const mediaItems = [
   { type: "image" as const, src: entrega1, alt: "Entrega de mercadería" },
@@ -32,11 +37,11 @@ const highlights = [
   },
 ];
 
-export function About() {
+export function About({ compact = false }: AboutProps) {
   return (
     <section
-      id="quienes-somos"
-      className="relative overflow-hidden bg-gradient-to-b from-white via-orange-50/40 to-white py-20 lg:py-24"
+      id={compact ? "quienes-somos" : undefined}
+      className="relative overflow-hidden bg-gradient-to-b from-white via-orange-50/40 to-white py-20 lg:py-15"
     >
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
@@ -91,7 +96,7 @@ export function About() {
                 Somos tu aliado estratégico en logística internacional
               </h3>
 
-              <p className="mt-4 text-slate-600 leading-7">
+              <p className="mt-4 leading-7 text-slate-600">
                 ALIANTRACK es una empresa boliviana orientada a brindar
                 soluciones logísticas integrales, especializándose en el
                 transporte de mercadería y contenedores por vía marítima y
@@ -100,7 +105,7 @@ export function About() {
                 cada envío.
               </p>
 
-              <p className="mt-4 text-slate-600 leading-7">
+              <p className="mt-4 leading-7 text-slate-600">
                 Nos enfocamos en ofrecer seguridad, trazabilidad y
                 acompañamiento para que nuestros clientes puedan importar con
                 mayor confianza y claridad en cada etapa del proceso.
@@ -128,65 +133,81 @@ export function About() {
                   );
                 })}
               </div>
+
+              {compact && (
+                <div className="mt-8">
+                  <Link
+                    to="/quienes-somos"
+                    className="inline-flex items-center rounded-2xl bg-primary px-5 py-3 font-semibold text-white transition hover:bg-orange-600"
+                  >
+                    Ver más
+                  </Link>
+                </div>
+              )}
             </div>
           </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.6 }}
-          className="mt-16"
-        >
-          <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <h3 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-                Experiencia real en entregas, despachos y aduana
-              </h3>
-              <p className="mt-2 max-w-2xl text-slate-600">
-                Conoce parte de nuestras operaciones logísticas, procesos de
-                despacho y entregas realizadas.
-              </p>
-            </div>
-          </div>
+        {!compact && (
+          <>
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.6 }}
+              className="mt-16"
+            >
+              <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-900 sm:text-3xl">
+                    Experiencia real en entregas, despachos y aduana
+                  </h3>
+                  <p className="mt-2 max-w-2xl text-slate-600">
+                    Conoce parte de nuestras operaciones logísticas, procesos de
+                    despacho y entregas realizadas.
+                  </p>
+                </div>
+              </div>
 
-          <MediaCarousel items={mediaItems} />
-        </motion.div>
+              <MediaCarousel items={mediaItems} />
+            </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.6 }}
-          className="mt-16 grid gap-6 lg:grid-cols-2"
-        >
-          <div className="rounded-3xl bg-slate-950 p-8 text-white shadow-xl">
-            <div className="mb-4 inline-flex rounded-2xl bg-primary/15 p-3 text-primary">
-              <Target className="h-6 w-6" />
-            </div>
-            <h3 className="text-2xl font-bold">Misión</h3>
-            <p className="mt-4 leading-7 text-slate-300">
-              Brindar soluciones logísticas internacionales confiables,
-              eficientes y seguras, facilitando la importación de mercadería
-              hacia Bolivia mediante un servicio personalizado, transparente y
-              orientado a las necesidades de cada cliente.
-            </p>
-          </div>
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.6 }}
+              className="mt-16 grid gap-6 lg:grid-cols-2"
+            >
+              <div className="rounded-3xl bg-slate-950 p-8 text-white shadow-xl">
+                <div className="mb-4 inline-flex rounded-2xl bg-primary/15 p-3 text-primary">
+                  <Target className="h-6 w-6" />
+                </div>
+                <h3 className="text-2xl font-bold">Misión</h3>
+                <p className="mt-4 leading-7 text-slate-300">
+                  Brindar soluciones logísticas internacionales confiables,
+                  eficientes y seguras, facilitando la importación de mercadería
+                  hacia Bolivia mediante un servicio personalizado, transparente
+                  y orientado a las necesidades de cada cliente.
+                </p>
+              </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
-            <div className="mb-4 inline-flex rounded-2xl bg-primary/10 p-3 text-primary">
-              <Eye className="h-6 w-6" />
-            </div>
-            <h3 className="text-2xl font-bold text-slate-900">Visión</h3>
-            <p className="mt-4 leading-7 text-slate-600">
-              Ser una empresa referente en Bolivia en logística e importaciones
-              internacionales, destacando por nuestra innovación, confianza,
-              cumplimiento y capacidad de conectar oportunidades globales con el
-              crecimiento de nuestros clientes.
-            </p>
-          </div>
-        </motion.div>
+              <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
+                <div className="mb-4 inline-flex rounded-2xl bg-primary/10 p-3 text-primary">
+                  <Eye className="h-6 w-6" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900">Visión</h3>
+                <p className="mt-4 leading-7 text-slate-600">
+                  Ser una empresa referente en Bolivia en logística e
+                  importaciones internacionales, destacando por nuestra
+                  innovación, confianza, cumplimiento y capacidad de conectar
+                  oportunidades globales con el crecimiento de nuestros
+                  clientes.
+                </p>
+              </div>
+            </motion.div>
+          </>
+        )}
       </div>
     </section>
   );

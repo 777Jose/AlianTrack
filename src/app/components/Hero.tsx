@@ -1,10 +1,11 @@
 import { ArrowRight, PlayCircle, Calculator, Ship, Plane } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export function Hero() {
   return (
     <section id="inicio" className="bg-hero bg-cover bg-center text-white">
-      <div className="container-app grid min-h-[86vh] items-center gap-10 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:py-24">
+      <div className="container-app grid min-h-[86vh] items-center gap-10 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:py-10">
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
@@ -37,28 +38,39 @@ export function Hero() {
               {
                 icon: Ship,
                 label: "Ver carga marítima",
-                href: "#servicios",
+                href: "/servicios/transporte-maritimo",
               },
               {
                 icon: Plane,
                 label: "Ver carga aérea",
-                href: "#servicios",
+                href: "/servicios/transporte-aereo",
               },
               {
                 icon: Calculator,
                 label: "Calcula tu flete",
                 href: "#calculadora",
               },
-            ].map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:bg-white/10"
-              >
-                <item.icon className="mb-3 text-primary" />
-                <p className="font-semibold text-white">{item.label}</p>
-              </a>
-            ))}
+            ].map((item) =>
+              item.href.startsWith("#") ? (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:bg-white/10"
+                >
+                  <item.icon className="mb-3 text-primary" />
+                  <p className="font-semibold text-white">{item.label}</p>
+                </a>
+              ) : (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:bg-white/10"
+                >
+                  <item.icon className="mb-3 text-primary" />
+                  <p className="font-semibold text-white">{item.label}</p>
+                </Link>
+              ),
+            )}
           </div>
         </motion.div>
 

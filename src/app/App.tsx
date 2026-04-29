@@ -1,31 +1,28 @@
-import { Contact } from './components/Contact'
-import { Countries } from './components/Countries'
-import { Features } from './components/Features'
-import { Footer } from './components/Footer'
-import { Header } from './components/Header'
-import { Hero } from './components/Hero'
-import { Process } from './components/Process'
-import { Services } from './components/Services'
-import { About } from './components/About';
-import { FreightCalculator } from './components/FreightCalculator';
-import { WhatsAppFloat } from './components/WhatsAppFloat';
+import { Routes, Route } from "react-router-dom";
+
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
+import { WhatsAppFloat } from "./components/WhatsAppFloat";
+import { ScrollToTop } from "./components/ScrollToTop";
+
+import { HomePage } from "./pages/HomePage";
+import { AboutPage } from "./pages/AboutPage";
+import { ServicesPage } from "./pages/ServicesPage";
 
 export function App() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <Header />
-      <main>
-        <Hero />
-        <About />
-        <Services />
-        //<Countries />
-        <Process />
-        <Features />
-        <FreightCalculator />
-        <Contact />
-      </main>
+      <ScrollToTop />
+
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/quienes-somos" element={<AboutPage />} />
+        <Route path="/servicios/:slug" element={<ServicesPage />} />
+      </Routes>
+
       <Footer />
       <WhatsAppFloat />
     </div>
-  )
+  );
 }
